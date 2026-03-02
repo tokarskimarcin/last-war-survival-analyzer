@@ -1,0 +1,19 @@
+# version: '3.8'
+
+services:
+  last-war-analyzer:
+    build:
+      context: ./app
+      dockerfile: ../Dockerfile
+    container_name: last_war_bot
+    network_mode: "host" # Allows direct communication with Windows ADB ports
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      - DISPLAY=host.docker.internal:0.0 # Points to your Windows X-Server
+    volumes:
+      - ./app:/app
+      - ./screenshots:/tmp/screenshots
+    stdin_open: true 
+    tty: true
+    restart: unless-stopped

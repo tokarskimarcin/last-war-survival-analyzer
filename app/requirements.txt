@@ -1,0 +1,7 @@
+customtkinter
+pillow
+pytesseract
+pandas
+gspread
+oauth2client
+pure-python-adb
